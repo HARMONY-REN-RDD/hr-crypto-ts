@@ -19,7 +19,10 @@ interface HexKeyPair {
 }
 
 class Dilithium {
-  private static ctxPromise = dilithiumModulePromise;
+  private static ctxPromise = (async () => {
+    const ctx = await dilithiumModulePromise;
+    return ctx;
+  })();
 
   static async get_keypair(seed: Uint8Array, algo: DilithiumAlgorithm): Promise<KeyPair> {
     if (!(seed instanceof Uint8Array)) throw new TypeError("Seed must be a Uint8Array");
