@@ -2,19 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const hkdf_1 = require("@noble/hashes/hkdf");
 const kyber_1 = require("./kyber");
-const dilithium_1 = require("./dilithium");
 const hashing_1 = require("./hashing");
+const dilithium_1 = require("./dilithium");
 class HarmonyCrypto {
-    constructor() {
-        this.hashing = {
-            hash(data, algo) {
-                return hashing_1.hashing_functions[algo](new TextEncoder().encode(data));
-            },
-            hash_hex(data, algo) {
-                const bytes = this.hash(data, algo);
-                return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
-            }
-        };
+    hash(data, algo) {
+        return hashing_1.hashing_functions[algo](new TextEncoder().encode(data));
+    }
+    hash_hex(data, algo) {
+        const bytes = this.hash(data, algo);
+        return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
     }
     static async hkdf_derive(seed, salt, info, length) {
         return (0, hkdf_1.hkdf)(hashing_1.hashing_functions.sha3_256, seed, salt, new TextEncoder().encode(info), length);

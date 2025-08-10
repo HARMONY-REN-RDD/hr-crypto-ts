@@ -5,24 +5,14 @@ import { hashing_functions, HashAlgorithm } from "./hashing";
 import { Dilithium, DilithiumAlgorithm, HexKeyPair, KeyPair } from './dilithium';
 
 export default class HarmonyCrypto {
-  hashing: {
-    hash(data: string, algo: HashAlgorithm): Uint8Array;
-    hash_hex(data: string, algo: HashAlgorithm): string;
-  };
-
-  constructor() {
-
-    this.hashing = {
-      hash(data: string, algo: HashAlgorithm): Uint8Array {
-        return hashing_functions[algo](new TextEncoder().encode(data));
-      },
-      hash_hex(data: string, algo: HashAlgorithm): string {
-        const bytes = this.hash(data, algo);
-        return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
-      }
-    };
+  hash(data: string, algo: HashAlgorithm): Uint8Array {
+    return hashing_functions[algo](new TextEncoder().encode(data));
   }
-
+  
+  hash_hex(data: string, algo: HashAlgorithm): string {
+    const bytes = this.hash(data, algo);
+    return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
   static async hkdf_derive(seed: Uint8Array, salt: Uint8Array, info: string, length: number): Promise<Uint8Array> {
     return hkdf(hashing_functions.sha3_256, seed, salt, new TextEncoder().encode(info), length);
   }
