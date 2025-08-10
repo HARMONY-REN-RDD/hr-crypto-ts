@@ -1,8 +1,8 @@
 import { hkdf } from '@noble/hashes/hkdf';
 
-import { Kyber, KyberAlgorithm } from './kyber';
-import { hashing_functions, HashAlgorithm } from "./hashing";
-import { Dilithium, DilithiumAlgorithm, HexKeyPair, KeyPair } from './dilithium';
+import { Kyber, KyberAlgorithm } from './kyber.js';
+import { hashing_functions, HashAlgorithm } from "./hashing.js";
+import { Dilithium, DilithiumAlgorithm, HexKeyPair, KeyPair } from './dilithium.js';
 
 export default class HarmonyCrypto {
   static hash(data: string, algo: HashAlgorithm): Uint8Array {

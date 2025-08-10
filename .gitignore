@@ -1,16 +1,4 @@
-# Node
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+dist
 
-# Logs
-*.log
-
-# Env files
-.env
-.env.local
-
-# Editor files
 .vscode/

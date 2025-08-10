@@ -10,7 +10,7 @@ const kyber_algorithms = {
 type KyberAlgorithm = keyof typeof kyber_algorithms;
 
 class Kyber {
-  private getCtx(algo: KyberAlgorithm): MlKemBase {
+  private getCtx(algo: KyberAlgorithm) {
     return new kyber_algorithms[algo]();
   }
 
