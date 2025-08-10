@@ -46,8 +46,6 @@ class Kyber {
 
 }
 
-export {
-  Kyber
-};
+export { Kyber };
 
 export type { KyberAlgorithm };

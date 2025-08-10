@@ -3,15 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dilithium_algorithms = exports.dilithiumModulePromise = exports.Dilithium = void 0;
+exports.Dilithium = void 0;
 const dilithium_crystals_js_1 = __importDefault(require("dilithium-crystals-js"));
-exports.dilithiumModulePromise = dilithium_crystals_js_1.default;
 const dilithium_algorithms = {
     dilithium_2: 0,
     dilithium_3: 1,
     dilithium_5: 2,
 };
-exports.dilithium_algorithms = dilithium_algorithms;
 class Dilithium {
     static async get_keypair(seed, algo) {
         if (!(seed instanceof Uint8Array))

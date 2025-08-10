@@ -5,11 +5,11 @@ import { hashing_functions, HashAlgorithm } from "./hashing";
 import { Dilithium, DilithiumAlgorithm, HexKeyPair, KeyPair } from './dilithium';
 
 export default class HarmonyCrypto {
-  hash(data: string, algo: HashAlgorithm): Uint8Array {
+  static hash(data: string, algo: HashAlgorithm): Uint8Array {
     return hashing_functions[algo](new TextEncoder().encode(data));
   }
   
-  hash_hex(data: string, algo: HashAlgorithm): string {
+  static hash_hex(data: string, algo: HashAlgorithm): string {
     const bytes = this.hash(data, algo);
     return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
   }

@@ -25,6 +25,6 @@ declare const hashing_functions: {
     };
 };
 type HashAlgorithm = keyof typeof hashing_functions;
-export { hashing_functions, };
+export { hashing_functions };
 export type { HashAlgorithm };
 //# sourceMappingURL=hashing.d.ts.map

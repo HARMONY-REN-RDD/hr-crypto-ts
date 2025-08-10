@@ -60,10 +60,6 @@ class Dilithium {
   }
 }
 
-export {
-  Dilithium,
-  dilithiumModulePromise,
-  dilithium_algorithms
-};
+export { Dilithium };
 
 export type { DilithiumAlgorithm, KeyPair, HexKeyPair };

@@ -1,4 +1,3 @@
-import dilithiumModulePromise from "dilithium-crystals-js";
 declare const dilithium_algorithms: {
     readonly dilithium_2: 0;
     readonly dilithium_3: 1;
@@ -20,6 +19,6 @@ declare class Dilithium {
     static sign(msg: Uint8Array, secret_key: Uint8Array, algo: DilithiumAlgorithm): Promise<Uint8Array>;
     static verify(signature: Uint8Array, msg: Uint8Array, public_key: Uint8Array, algo: DilithiumAlgorithm): Promise<boolean>;
 }
-export { Dilithium, dilithiumModulePromise, dilithium_algorithms };
+export { Dilithium };
 export type { DilithiumAlgorithm, KeyPair, HexKeyPair };
 //# sourceMappingURL=dilithium.d.ts.map

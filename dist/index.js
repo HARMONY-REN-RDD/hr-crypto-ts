@@ -5,10 +5,10 @@ const kyber_1 = require("./kyber");
 const hashing_1 = require("./hashing");
 const dilithium_1 = require("./dilithium");
 class HarmonyCrypto {
-    hash(data, algo) {
+    static hash(data, algo) {
         return hashing_1.hashing_functions[algo](new TextEncoder().encode(data));
     }
-    hash_hex(data, algo) {
+    static hash_hex(data, algo) {
         const bytes = this.hash(data, algo);
         return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
     }
