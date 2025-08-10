@@ -77,29 +77,29 @@ export default class HarmonyCrypto {
   }
 }
 
-async function main() {
-  const hrc = new HarmonyCrypto();
-
-  let msg = "Hi";
-
-  const seed = new Uint8Array(64);
-  seed.fill(0);
-
-  const signing_keypair = await hrc.get_dilithium_keypair("dilithium_2", seed, "signing keypair");
-  const encapsulating_keypair = await hrc.get_kyber_kypair("kyber512", seed, "encapsulating keypair");
-
-  const signature = await hrc.dilithium_sign(new TextEncoder().encode(msg), signing_keypair.secret_key, "dilithium_2");
-
-  msg = "Not hi"; // Intentional
-  const verified = await hrc.dilithium_verify(signature, new TextEncoder().encode(msg), signing_keypair.public_key, "dilithium_2");
-
-  const { cyphertext, shared_secret } = await hrc.kyber_encapsulate("kyber512", encapsulating_keypair.public_key);
-
-  const decapsulated = await hrc.kyber_decapsulate("kyber512", cyphertext, encapsulating_keypair.secret_key);
-
-  console.log(verified); // should be false
-  console.log(shared_secret.length  // should be true
-    === decapsulated.length && shared_secret.every((v, i) => v === decapsulated[i]));
-}
+//async function main() {
+//  const hrc = new HarmonyCrypto();
+//
+//  let msg = "Hi";
+//
+//  const seed = new Uint8Array(64);
+//  seed.fill(0);
+//
+//  const signing_keypair = await hrc.get_dilithium_keypair("dilithium_2", seed, "signing keypair");
+//  const encapsulating_keypair = await hrc.get_kyber_kypair("kyber512", seed, "encapsulating keypair");
+//
+//  const signature = await hrc.dilithium_sign(new TextEncoder().encode(msg), signing_keypair.secret_key, "dilithium_2");
+//
+//  msg = "Not hi"; // Intentional
+//  const verified = await hrc.dilithium_verify(signature, new TextEncoder().encode(msg), signing_keypair.public_key, "dilithium_2");
+//
+//  const { cyphertext, shared_secret } = await hrc.kyber_encapsulate("kyber512", encapsulating_keypair.public_key);
+//
+//  const decapsulated = await hrc.kyber_decapsulate("kyber512", cyphertext, encapsulating_keypair.secret_key);
+//
+//  console.log(verified); // should be false
+//  console.log(shared_secret.length  // should be true
+//    === decapsulated.length && shared_secret.every((v, i) => v === decapsulated[i]));
+//}
 
 // main();
