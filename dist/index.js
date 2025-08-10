@@ -65,5 +65,5 @@ async function main() {
     console.log(shared_secret.length // should be true
         === decapsulated.length && shared_secret.every((v, i) => v === decapsulated[i]));
 }
-main();
+// main();
 //# sourceMappingURL=index.js.map
